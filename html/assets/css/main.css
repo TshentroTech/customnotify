@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --success-color: #272727;
+  --error-color: #272727;
+  --warning-color: #272727;
+  --info-color: #272727;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.notifications {
+  position: fixed;
+  left: 55px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.notifications .toast {
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(100%);
+  animation: show_toast 0.3s forwards;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0px 0px 10px rgba(57, 57, 57, 0.898);
+  width: 35px;
+  text-shadow: 0px 0px 20px #0000009c;
+  height: 35px;
+  background-color: rgba(0, 0, 0, 0.705);
+  color: #00ffdd;
+  text-shadow: 0px 0px 10px #00e1ff9c;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 20px;
+  color: #00ffdd;
+  text-shadow: 0px 0px 10px #ffffff9c;
+  border-right: solid 2px #000000;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.846);
+  border-radius: 0px;
+}
+
+.message .text {
+  font-weight: lighter;
+}
+
+@keyframes show_toast {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hide_toast {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.toast.hide {
+  animation: hide_toast 0.2s forwards;
+}
+
+@media screen and (max-width: 530px) {
+  .notifications {
+    width: 95%;
+  }
+
+  .notifications .toast {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
